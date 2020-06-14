@@ -28,3 +28,10 @@ slice - O(n)
 splice - O(n)
 sort - O(n * log n)
 forEach/map/filter/reduce/etc. - O(n)
+
+# -------------------------------------------
+# Simplify
+- find core difficulty in what you're trying to do
+- Temporarily ignore the difficulty
+- Write a simplified solution
+- Then incorporate that difficulty back in

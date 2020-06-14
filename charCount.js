@@ -45,7 +45,17 @@ charCount("Your PIN number is 1234!")
 
 function charCount(str){
     // make object to return at end
+    let result = {}
     // loop over string, for each char...
+    for(let i = 0; i < str.length; i++){
+        let char = str[i].toLowerCase()
+        if(result[char] > 0){
+            result[char]++;
+        } else {
+            result[char] = 1;
+        }
+    }
+    return result
         // if char is a number/letter AND is a key in obj, add one to count
         // if char is a number/letter AND not in obj, add it to obj and set value to 1.
         // if char is something else (space, period, ! etc. etc.) don't do anything.
