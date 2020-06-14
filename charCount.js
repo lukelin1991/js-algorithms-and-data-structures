@@ -63,3 +63,18 @@ function charCount(str){
 }
 
 // in the interview its about THE PROCESS..
+
+// different way of solving it.
+function charCount(str){
+    let obj = {}
+    for (let char of str){ // goes by the character of the input instead of ur typical for loop which starts at 0.
+        char = char.toLowerCase();
+        if (/[a-z0-9]/.test(char)){
+            if (obj[char] > 0){
+                obj[char]++;
+            } else {
+                obj[char] = 1;
+            };
+        }
+    }
+}
