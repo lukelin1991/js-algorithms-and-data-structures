@@ -68,9 +68,21 @@ function charCount(str){
 function charCount(str){
     let obj = {}
     for (let char of str){ // goes by the character of the input instead of ur typical for loop which starts at 0.
-        char = char.toLowerCase();
-        if (/[a-z0-9]/.test(char)){
+        if (isAlphaNumeric(char)){
+            char = char.toLowerCase();
             obj[char] = ++obj[char] || 1; // replaces if/else statement, increases count of obj[char] OR sets it to 1.
         }
     }
 }
+
+function isAlphaNumeric(char){ // faster than regex if you're using charCodes. 
+    let code = char.charCodeAt(0)
+    if (!(code > 47 && code < 58) && // numeric (0-9)
+        !(code > 64 && code < 91) && // upper alpha (A-Z)
+        !(code > 96 && code < 123)){ // lower alpha (a-z)
+        return false
+    }
+    return true;
+}
+
+charCodeAt(0)
