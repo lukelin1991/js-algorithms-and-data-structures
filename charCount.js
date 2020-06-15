@@ -70,11 +70,7 @@ function charCount(str){
     for (let char of str){ // goes by the character of the input instead of ur typical for loop which starts at 0.
         char = char.toLowerCase();
         if (/[a-z0-9]/.test(char)){
-            if (obj[char] > 0){
-                obj[char]++;
-            } else {
-                obj[char] = 1;
-            };
+            obj[char] = ++obj[char] || 1; // replaces if/else statement, increases count of obj[char] OR sets it to 1.
         }
     }
 }
