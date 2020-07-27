@@ -4,7 +4,7 @@ function binarySearch(target, nums) {
   // We think of floorIndex and ceilingIndex as "walls" around
   // the possible positions of our target so by -1 below we mean
   // to start our wall "to the left" of the 0th index
-  // (we *don't* mean "the last index")
+  // (we *don't* mean "the last index") *******
   let floorIndex = -1;
   let ceilingIndex = nums.length;
 
