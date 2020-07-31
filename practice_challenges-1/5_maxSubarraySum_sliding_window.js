@@ -16,16 +16,17 @@ Time complexity: O(n)
 */
 
 function maxSubarraySum(arr, num){
-    let maxSum = 0
-    let tempSum = 0
     if(arr.length < num) return null; // can't input any more numbers if theres no more numbers in array.
+
+    let total = 0;
     for(let i = 0; i < num; i++){
-        maxSum += arr[i] // iterates through adding x numbers.
+        total += arr[i] // iterates through adding x numbers.
     }
-    tempSum = maxSum; // sets a temporarySum as the maximum sum
+    let currentTotal = total; // sets a temporarySum as the maximum sum
+
     for(let i = num; i < arr.length; i++){
-        tempSum = tempSum - arr[i - num] + arr[i];
-        maxSum = Math.max(maxSum, tempSum)
+        currentTotal += arr[i] - arr[i - num];
+        total = Math.max(total, currentTotal)
     }
-    return maxSum
+    return total
 }
