@@ -9,7 +9,7 @@ function capitalizeFirst(arr){
     }
 
     const res = capitalizeFirst(arr.slice(0, -1)) // recursion, cutting last string/element off array.
-    const str = arr.slice(arr.length-1)[0][0].toUpperCase() + arr.slice(arr.length-1)[0].substr(1)
+    const str = arr.slice(-1)[0][0].toUpperCase() + arr.slice(1)[0].substr(1)
     res.push(str) // pushing it back onto the recursive loop. 
     return res
 }
