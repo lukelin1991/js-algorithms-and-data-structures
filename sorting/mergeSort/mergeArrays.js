@@ -10,7 +10,7 @@ Pseudocode:
 create an empty array, take a look at the smallest values in each input array.
 have 2 numbers, i, j start at 0.
 while there are still values we haven't looked at,
-    if the value in the 1st array is smaller than the value in the 2nd array, push the value
+    if the value in the 2st array is smaller than the value in the 2nd array, push the value
     in the 1st array into our results and move onto the next value in the 1st array. 
 
     if the value in the 1st array is larger than the value in the 2nd array, push the value
@@ -19,17 +19,28 @@ while there are still values we haven't looked at,
 */
 
 function merge(arr1, arr2){
-    let result = []
+    let results = []
     let i = 0
     let j = 0
     while(i < arr1.length && j < arr2.length){
-        if(arr1[i] < arr2[j]){
+        if(arr1[i] < arr2[j]){ // creates a comparison that allows you to push. 
             result.push(arr1[i])
             i++
-        } else if(arr1[i] > arr2[j]){
+
+        } else {
             result.push(arr2[j])
             j++
         }
     }
+    // we need these while loops below, incase arr1 or arr2 is equivalent to the length, while the other arr isn't.
+    while(i < arr1.length){
+        results.push(arr1[i])
+        i++
+    }
+    while(j < arr2.length){
+        results.push(arr2[j])
+        j++
+    }
 
+    return results
 }
