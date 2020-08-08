@@ -4,6 +4,10 @@ class Student {
         this.lastName = lastName
         this.grade = year
     }
+    //instance method/function
+    fullName(){
+        return `Your full name is ${this.firstName} ${this.lastName}`
+    }
 }
 
 let firstStudent = new Student("Colt", "Steele")
