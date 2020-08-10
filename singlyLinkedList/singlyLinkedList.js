@@ -51,6 +51,15 @@ set the next property on that node to be the new node
 set the next property on the new node to be the previous next
 increment the length
 return true
+
+remove pseudocode
+if the idnex is less than zero or greater than the length, return undefined
+if the index is the same as length-1, pop
+if the index is 0, shift
+otherwise, using the get method, access the node at the index - 1
+set the next property on that node to be the next of the next node.
+decrement the length
+return the value of the node removed
 */
 
 class Node {
@@ -158,7 +167,17 @@ class SinglyLinkedList{
         newNode.next = temp
         this.length++
         return true
-
+    }
+    remove(index){
+        if(index < 0 || index >= this.length) return undefined
+        if(index === 0) return this.shift()
+        if(index === this.length - 1) return this.pop();
+        let prevNode = this.get(index - 1)
+        let removed = prevNode.next
+        prevNode.next = removed.next
+        this.length--
+        
+        return removed
     }
 }
 
