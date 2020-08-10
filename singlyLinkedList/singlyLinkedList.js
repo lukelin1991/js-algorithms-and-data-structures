@@ -30,6 +30,11 @@ otherwise set the newly created node's next property to be the current head prop
 set the head property on the list to be that newly created node
 increment the length of the list by 1
 return the linked list
+
+get pseudocode
+this function should accept an index
+if the index is less than zero or greater than or equal to the length of the list, return null
+loop through the list until you reach the index and return the node at that specific index
 */
 
 class Node {
@@ -107,6 +112,16 @@ class SinglyLinkedList{
         }
         this.length++
         return this
+    }
+    get(index){
+        if(index < 0 || index >= this.length) return null
+        let counter = 0
+        let current = this.head
+        while(counter !== index){
+            current = current.next
+            current++
+        }
+        return current
     }
 }
 
