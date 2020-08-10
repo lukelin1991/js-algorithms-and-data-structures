@@ -41,6 +41,16 @@ this function should accept a value and an index
 use your get function to find the specific node.
 if the node is not found, return false
 if node is found, set the value of that node to be the value passed to the function and return true
+
+insert pseudocode
+if the index is less than zero or greater than the length, return false.
+if the index is the same as the length, push a new node to the end of the list.
+if the index is 0, unshift a new node to the start of the list.
+otherwise, using the get method, access the node at the index - 1
+set the next property on that node to be the new node
+set the next property on the new node to be the previous next
+increment the length
+return true
 */
 
 class Node {
@@ -136,6 +146,19 @@ class SinglyLinkedList{
             return true
         }
         return false
+    }
+    insert(index, val){
+        if(index < 0 || index > this.length) return false
+        if(index === this.length) return !!this.push(val)
+        if(index === 0) return !!this.unshift(val)
+        let newNode = new Node(val)
+        let prev = this.get(index - 1)
+        let temp = prev.next
+        prev.next = newNode
+        newNode.next = temp
+        this.length++
+        return true
+
     }
 }
 
