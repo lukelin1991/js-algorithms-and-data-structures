@@ -35,6 +35,12 @@ get pseudocode
 this function should accept an index
 if the index is less than zero or greater than or equal to the length of the list, return null
 loop through the list until you reach the index and return the node at that specific index
+
+set pseudocode
+this function should accept a value and an index
+use your get function to find the specific node.
+if the node is not found, return false
+if node is found, set the value of that node to be the value passed to the function and return true
 */
 
 class Node {
@@ -122,6 +128,14 @@ class SinglyLinkedList{
             current++
         }
         return current
+    }
+    set(index, val){
+        let foundNode = this.get(index)
+        if(foundNode){
+            foundNode.val = val
+            return true
+        }
+        return false
     }
 }
 
