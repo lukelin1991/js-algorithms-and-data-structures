@@ -6,6 +6,21 @@ if there is no head property on the list, set the head and tail to the newly cre
 otherwise set the next property on the tail to be the new node and set the tail property on the list to be
 the newly created node
 increment the length by one
+
+popping pseudocode
+if there are no nodes in the list, return undefined
+loop through the list until you reach the tail
+set the next property of the 2nd to last node to be null
+set the tail to be the 2nd to last node.
+decrement the length of the list by 1
+return the value of the node removed
+
+shifting pseudocode
+if there are no nodes, return undefined
+store the current head property in a variable
+set the head property to be the current head's next property
+decrement the length by 1
+return the value of the node removed
 */
 
 class Node {
@@ -42,6 +57,39 @@ class SinglyLinkedList{
             current = current.next
         }
     }
+    pop(){
+        if(!this.head) return undefined
+        let current = this.head;
+        let newTail = current
+
+        while(current.next){
+            newTail = current
+            current = current.next
+        }
+        this.tail = newTail
+        this.tail.next = null
+        this.length--
+        if(this.length === 0){
+            this.head = null
+            this.tail = null
+        }
+        return current
+    }
+    shift(){
+        if(!this.head) return undefined
+
+        let current = this.head;
+        this.head = current.next
+        this.length--
+        if(this.length === 0){
+            this.head = null
+            this.tail = null
+        }
+        return current
+
+    }
+
+
 }
 
 // let first = new Node("Hi")
