@@ -21,6 +21,15 @@ store the current head property in a variable
 set the head property to be the current head's next property
 decrement the length by 1
 return the value of the node removed
+
+unshifting pseudocode
+this function should accept a value
+create a new node using the value passed to the function
+if there is no head property on the list, set the head and tail to be the newly created node
+otherwise set the newly created node's next property to be the current head property on the list
+set the head property on the list to be that newly created node
+increment the length of the list by 1
+return the linked list
 */
 
 class Node {
@@ -86,17 +95,19 @@ class SinglyLinkedList{
             this.tail = null
         }
         return current
-
     }
-
-
+    unshift(val){
+        let newNode = new Node(val)
+        if(!this.head){
+            this.head = newNode
+            this.tail = this.head
+        }
+        newNode.next = this.head
+        this.head = newNode
+        this.length++
+        return this
+    }
 }
-
-// let first = new Node("Hi")
-// first.next = new Node("there")
-// first.next.next = new Node("how")
-// first.next.next.next = new Node("are")
-// first.next.next.next.next = new Node("you")
 
 let list = new SinglyLinkedList()
 list.push("HELLO")
