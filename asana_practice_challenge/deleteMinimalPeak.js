@@ -68,7 +68,7 @@ function deleteMinimalPeaks(num){
 
 
 
-
+/*
 let newArr = [] 
 
 function deleteMinimalPeaks(num){
@@ -121,6 +121,7 @@ function deleteMinimalPeaks(num){
    }
    return newArr
 }
+*/
 
 /*
 tests:
