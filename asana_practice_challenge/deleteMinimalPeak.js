@@ -7,6 +7,68 @@ In other words, there is a peak at index i if both of the following conditions a
 Your task is to consecutively remove the minimal peaks of the given array numbers one by one, and
 then return an array containing the deleted elements in the order they were removed from the array.
 */
+let newArr = []
+
+function deleteMinimalPeaks(num){
+    let minPeak = Math.max(...num)
+   
+    if(num.length === 0) return newArr // base case
+
+    for(let i = 0; i < num.length;i++){
+        let left = false
+        let right = false
+
+        // left side
+        if(typeof num[i - 1] === 'undefined' || num[i] > num[i - 1]) left = true
+
+        // right side
+        if(typeof num[i + 1] === 'undefined' || num[i] > num[i + 1]) right = true
+
+        // finding min peak.
+        if(left && right){
+            if(num[i] < minPeak){
+                minPeak = num[i]
+            }
+        }
+
+        // solving through recursion
+        if(i === num.length - 1){
+            newArr.push(minPeak)
+            num.splice(num.indexOf(minPeak), 1)
+            console.log(num, newArr)
+            deleteMinimalPeaks(num)
+        }
+    }
+    return newArr
+}
+
+
+
+
+// 8, 6, 9.
+// numbers: [2, 7, 8, 5, 1, 6, 3, 9, 4]
+// output: [6, 8, 7, 5, 2, 9, 4, 3, 1]
+
+// numbers: [1, 5, 3, 4, 2]
+// output: [4, 5, 3, 2, 1]
+
+// numbers: [2, 3]
+// output: [3, 2]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let newArr = [] 
 
 function deleteMinimalPeaks(num){
