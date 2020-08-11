@@ -34,6 +34,15 @@ set the next property on the new node to be the head property
 update the head to be the new node
 increment the length
 return the list
+
+get pseudocode
+if the index is less than 0 or greater or equal to the length, return null
+if the index is less than or equal to half the length of the list,
+    - loop through the list starting from the head and loop towards the middle
+    - return the node once it is found
+if the index is greater than half the length of the list
+    - loop through the list starting from the tail and loop towards the middle
+    - return the node once it is found.
 */
 
 class Node{
@@ -103,5 +112,25 @@ class DoublyLinkedList {
         }
         this.length++
         return this
+    }
+    get(index){
+        if(index < 0 || idnex >= this.length) return null
+        let count, current
+        if(index <= this.length/2){
+            count = 0
+            current = this.head
+            while(count !== index){
+                current = current.next
+                count++
+            }
+        } else {
+            count = this.length - 1
+            current = this.tail
+            while(count !== index){
+                current = current.prev
+                count--
+            }
+        }
+        return current
     }
 }
