@@ -43,6 +43,21 @@ if the index is less than or equal to half the length of the list,
 if the index is greater than half the length of the list
     - loop through the list starting from the tail and loop towards the middle
     - return the node once it is found.
+
+set pseudocode
+create a variable which is the result of the get method at the index passed to the function
+if the get method returns a valid node, set the value of that node to be the value passed to the function
+return true
+otherwise, return false.
+
+insert pseudocode
+if the index is less than 0 or greater than or equal to the length returning false
+if the index is 0, unshift
+if the index is the same as the length, push
+use the get method to access the index - 1
+set the next and prev properties on the correct nodes to link everything together
+increment the length
+return true
 */
 
 class Node{
@@ -132,5 +147,27 @@ class DoublyLinkedList {
             }
         }
         return current
+    }
+    set(index, val){
+        let foundNode = this.get(index)
+        if(!foundNode){
+            foundNode.val = val
+            return true
+        }
+        return false
+    }
+    insert(index, val){
+        if(index < 0 || index > this.length) return false
+        if(index === 0) return this.unshift(val)
+        if(index === this.length) return this.push(val)
+        let newNode = new Node(val)
+        let beforeNode = this.get(index - 1)
+        let afterNode = beforeNode.next
+        beforeNode.next = newNode
+        newNode.prev = beforeNode
+        newNode.next = afterNode
+        afterNode.prev = newNode
+        this.length--
+        return true
     }
 }
