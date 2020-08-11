@@ -25,6 +25,15 @@ set the head's prev property to null
 set the old head's next to null
 decrement the length
 return old head
+
+unshift pseudocode
+create a new node with the value passed to the function
+if the length is 0, set head & tail to be the new node.
+otherwise, set prev property on the head of the list to be the new node.
+set the next property on the new node to be the head property
+update the head to be the new node
+increment the length
+return the list
 */
 
 class Node{
@@ -81,5 +90,18 @@ class DoublyLinkedList {
         }
         this.length--
         return oldHead
+    }
+    unshift(val){
+        let newNode = new Node(val)
+        if(this.length === 0){
+            this.head = newNode
+            this.tail = newNode
+        } else {
+            this.head.prev = newNode
+            newNode.next = this.head
+            this.head = newNode
+        }
+        this.length++
+        return this
     }
 }
