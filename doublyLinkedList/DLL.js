@@ -58,6 +58,16 @@ use the get method to access the index - 1
 set the next and prev properties on the correct nodes to link everything together
 increment the length
 return true
+
+remove pseudocode
+if the index is less than 0 or greater than or equal to the length return undefined
+if the index is 0, shift
+if the index is the same as the length - 1, pop
+use the get method to retrieve the item to be removed
+update the next and prev properties to remove the found node from the list
+set next and prev to null on the found node.
+decrement the length
+return the removed node
 */
 
 class Node{
@@ -160,9 +170,11 @@ class DoublyLinkedList {
         if(index < 0 || index > this.length) return false
         if(index === 0) return this.unshift(val)
         if(index === this.length) return this.push(val)
+
         let newNode = new Node(val)
         let beforeNode = this.get(index - 1)
         let afterNode = beforeNode.next
+
         beforeNode.next = newNode
         newNode.prev = beforeNode
         newNode.next = afterNode
@@ -170,4 +182,28 @@ class DoublyLinkedList {
         this.length--
         return true
     }
+    remove(index){
+        if(index < 0 || index >= this.length) return undefined
+        if(index === 0) return this.shift()
+        if(index === this.length - 1) return this.pop()
+
+        let removedNode = this.get(index)
+        let beforeNode = removedNode.prev
+        let afterNode = removedNode.next
+
+        beforeNode.next = afterNode
+        afterNode.prev = beforeNode
+        removedNode.next = null
+        removedNode.prev = null
+        this.length--
+        return removedNode
+    }
 }
+
+/*
+Big O of doubly linked lists
+insertion - O(1)
+removal - O(1)
+searching - O(N)
+access - O(N)
+*/
