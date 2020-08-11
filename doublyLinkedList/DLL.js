@@ -15,7 +15,16 @@ set the newTail's next to be null
 decrement the length
 return the value removed
 
-
+shifting pseudocode
+if length is 0, return undefined
+store the current head property in a value (we'll call oldHead)
+if the length is 1
+set head to be null & tail to be null
+update the head to be the next of the old head
+set the head's prev property to null
+set the old head's next to null
+decrement the length
+return old head
 */
 
 class Node{
@@ -58,5 +67,19 @@ class DoublyLinkedList {
         }
         this.length--
         return currentTail
+    }
+    shift(){
+        if(this.length === 0) return undefined
+        let oldHead = this.head
+        if(this.length === 1){
+            this.head = null
+            this.tail = null
+        } else {
+            this.head = oldHead.next
+            this.head.prev = null
+            oldHead.next = null
+        }
+        this.length--
+        return oldHead
     }
 }
