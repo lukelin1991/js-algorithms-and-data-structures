@@ -60,6 +60,23 @@ otherwise, using the get method, access the node at the index - 1
 set the next property on that node to be the next of the next node.
 decrement the length
 return the value of the node removed
+
+reverse pseudocode
+swap head and tail
+create a variable called next
+create a variable called prev
+create a variable called node and initialize it to the head property
+loop through the list
+set next to be the next property on whatever node is
+set the next property on the node to be whatever prev is
+set prev to be the value of the node variable
+set the node variable to be the value of the next variable
+
+Big O of singly linked lists
+insertion - O(1)
+removal - depends O(1) or O(n)
+searching - O(n)
+access - O(n)
 */
 
 class Node {
@@ -176,8 +193,31 @@ class SinglyLinkedList{
         let removed = prevNode.next
         prevNode.next = removed.next
         this.length--
-        
+
         return removed
+    }
+    print(){
+        let arr = []
+        let current = this.head
+        while(current){
+            arr.push(current.val)
+            current = current.next
+        }
+        console.log(arr)
+    }
+    reverse(){
+        let node = this.head
+        this.head = this.tail
+        this.tail = node
+        let next
+        let prev = null
+        for(let i = 0; i < this.length; i++){
+            next = node.next
+            node.next = prev
+            prev = node
+            node = next
+        }
+        return this
     }
 }
 

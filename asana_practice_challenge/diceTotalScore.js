@@ -9,7 +9,18 @@ Given the values of a, b, and c, your task is to calculate and return your total
 */
 
 function diceTotalScore(a, b, c){
-
+    if(a === c && b === c && a === b){
+        return 1000 * a
+    }
+    if(a === b){
+        return 500 * a
+    } else if(b === c){
+        return 500 * b
+    }else if(a === c){
+        return 500 * c
+    } else {
+        return 100 * (Math.min(a, b, c))
+    }
 }
 
 /*
