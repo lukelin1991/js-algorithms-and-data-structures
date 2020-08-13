@@ -15,6 +15,12 @@ if there is only 1 node, set the first and last property to be null
 if there is more than one node, set the first property to be the next property on the current first
 decrement the size by 1
 return the value of the node removed
+
+Big O of Stacks
+insertion - O(1)
+removal - O(1)
+Searching - O(n)
+access - O(n)
 */
 
 class Node {
