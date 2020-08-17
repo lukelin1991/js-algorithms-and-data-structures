@@ -100,6 +100,11 @@ class BinarySearchTree {
     }
 }
 
+/*
+insertion - O(log N)
+searching - O(log N)
+*/
+
 let tree = new BinarySearchTree();
 tree.root = new Node(10)
 tree.root.right = new Node(15)
