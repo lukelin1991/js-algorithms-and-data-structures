@@ -16,7 +16,8 @@ write a helper function which accepts a node
     - If the node has a left property, call the helper function with the left property on the node
     - if the node has a right property, call the helper function with the right property on the node
     - push the value of the node to the variable that stores the values
-    invoke the helper function with the current variable.
+    - invoke the helper function with the current variable.
+return the array of values
 */
 
 class Node {
@@ -114,6 +115,14 @@ class BinarySearchTree {
         return data
     }
     DFSPostOrder(){
+        let data = []
 
+        function traverse(node){
+            if(node.left) traverse(node.left)
+            if(node.right) traverse(node.right)
+            data.push(node.value)
+        }
+        traverse(this.root)
+        return data
     }
 }
