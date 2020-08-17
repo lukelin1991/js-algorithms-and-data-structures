@@ -12,6 +12,21 @@ starting at the root
         - Check to see if there is a node to the left
             - if there is, move to that node and repeat these steps
             - if there is not, add that node as the left property
+
+finding node
+start at root
+    check if theres a root, if not we're done searching!
+    if there is a root, check if the value of the new node is the value we're looking for.
+    if we found it, we're done!
+    if not, check to see if the value is greater than or less than the value of root.
+    if its greater
+        - check to see if theres a node to the right
+            - if there is, move to that node & repeat these steps
+            - if not, we're done searching!
+    if it is less
+        - check to see if there is a node to the left
+            - if there is, move to that node & repeat steps
+            - if there is not, we're done searching!
 */
 
 class Node {
@@ -51,6 +66,22 @@ class BinarySearchTree {
                 current = current.right
             }
         }
+    }
+    find(value){
+        if(this.root === null) return false
+        let current = this.root,
+            found = false
+        while(current && !found){
+            if(value < current.value){
+                current = current.left
+            } else if(value > current.value){
+                current = current.right
+            } else {
+                found = true
+            }
+        }
+        if(!found) return undefined
+        return current
     }
 }
 
