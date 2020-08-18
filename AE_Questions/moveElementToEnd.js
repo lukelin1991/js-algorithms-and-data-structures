@@ -8,6 +8,9 @@ maintain the order of the other integers.
 sample input:
 array = [2,1,2,2,2,3,4,2]
 toMove = 2
+
+sample output:
+array = [1,3,4,2,2,2,2,2] the numbers 1, 3, and 4 could be ordered differently*****
 */
 
 function moveElementToEnd(array, toMove) {
