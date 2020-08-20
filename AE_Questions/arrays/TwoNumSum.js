@@ -17,5 +17,15 @@ Sample Output
 */
 
 function twoNumberSum(array, targetSum){
-    
+    array.sort((a, b) => a - b)
+	let first = 0
+	let last = array.length - 1
+	
+	while(first < last){
+		let sum = array[first] + array[last]
+		if(sum === targetSum) return [array[first], array[last]]
+		if(sum < targetSum) first++
+		if(sum > targetSum) last--
+	}
+	return []
 }
