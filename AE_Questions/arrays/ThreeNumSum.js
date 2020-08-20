@@ -13,6 +13,9 @@ targetSum = 0
 
 Sample Output
 [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
+
+Time = O(N^2)
+Space = O(N)
 */
 
 function threeNumberSum(array, targetSum){
@@ -35,5 +38,4 @@ function threeNumberSum(array, targetSum){
 		}
 	}
 	return triplets
-
 }
