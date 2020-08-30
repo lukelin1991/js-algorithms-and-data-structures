@@ -32,6 +32,7 @@ function calculateSums(node, runningSum, sums){
 		sums.push(newRunningSum)
 		return
 	}
-	calculateSums(node.left, runningSum, sums)
-	calculateSums(node.right, runningSum, sums)
+	
+	calculateSums(node.left, newRunningSum, sums)
+	calculateSums(node.right, newRunningSum, sums)
 }
