@@ -80,7 +80,7 @@ class Heap {
             if(this.comparisonFunc(heap[idxToSwap], heap[currentIdx])){
                 this.swap(heap, currentIdx, idxToSwap)
                 currentIdx = idxToSwap
-                childOne = currentIdx * 2 + 1
+                childOneIdx = currentIdx * 2 + 1
             } else {
                 return
             }
@@ -105,7 +105,7 @@ class Heap {
         this.swap(this.heap, 0, this.length - 1)
         const valToRemove = this.heap.pop()
         this.length--
-        this.siftDown(0, this.length - 1, this.leap)
+        this.siftDown(0, this.length - 1, this.heap)
         return valToRemove
     }
     insert(value){
