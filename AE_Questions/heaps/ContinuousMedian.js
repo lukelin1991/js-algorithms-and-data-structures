@@ -125,3 +125,54 @@ function MAX_HEAP_FUNC(a, b){
 function MIN_HEAP_FUNC(a, b){
     return a < b
 }
+
+var employeeFreeTime = function(schedule) {
+    
+    let res = [];
+
+    for (let s of schedule) {
+        for (let d of s) {
+            res.push(d)
+        }
+    }
+
+    res = res.sort((a, b) => a['start'] - b['start']);
+
+    let temp = [res[0]]
+
+    // do a merge of intervals
+
+    for (let i = 1; i < res.length; i++) {
+
+        let current = res[i];
+        let last = temp[temp.length - 1];
+
+        if (current['start'] < last['end']) {
+            last['end'] = Math.max(last['end'], current['end'])
+        } else {
+            temp.push(current)
+        }
+
+
+    }
+
+
+    let result = [];
+    for (let i = 0; i < temp.length; i++) {
+        let current = temp[i];
+        let next = temp[i + 1];
+
+        if (next) {
+            if (current['end'] < next['end']) {
+                //   result.push(temp)
+                let data = new Interval(current['end'], next['start']);
+                
+                if(current['end'] !== next['start']){
+                    result.push(data)
+                }
+            }
+        }
+    }
+
+    return result;
+};
