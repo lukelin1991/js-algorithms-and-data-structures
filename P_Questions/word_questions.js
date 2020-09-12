@@ -58,3 +58,37 @@ function find_embedded_word(words, string){
     }
     return "None"
 }
+
+
+// function findEmbeddedWord(words, string) {
+//     let wordDict = {}
+//     //loop through words
+//     for (let i = 0; i < words.length; i++) {
+//         let word = words[i]
+//         for (let j = 0; j < word.length; j++) {
+//             if (!wordDict[word[j]]) {
+//                 wordDict[word[j]] = 0
+//             }
+//             wordDict[word[j]]++
+//         }
+//         let isWord = checkWord(wordDict, string);
+//         if (isWord) return word
+//         wordDict = {}
+//     }  
+//     return 'None'
+// }
+  
+// function checkWord(word, str) {//{}
+//     for (let i = 0; i < str.length; i++) {
+//         if(word[str[i]]) {
+//             word[str[i]]--
+//             if (word[str[i]] === 0) {
+//                 delete word[str[i]]
+//             }
+//         }
+//         if (Object.keys(word).length ===0 ) {
+//             return true
+//         }
+//     }
+//     return false 
+// }
