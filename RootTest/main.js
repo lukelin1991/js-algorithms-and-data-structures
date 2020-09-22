@@ -5,45 +5,44 @@ fs.readFile('index.txt', 'utf8', function(err, data){
     parseArray(contentArray)
 })
 
-class App {
-    state = {
-        arr: []
-    }
-}
-
 function parseArray(arr){
+    let newObj = {}
     arr.forEach(content => {
         const action = content.split(" ")
-        App.state.arr = action
+        if(action[0] === 'Driver'){
+            newObj[action[1]] = []
+        } else if(action[0] === 'Trip'){
+            // calculate time
+            const startTime = action[2]
+            const stopTime = action[3]
+            const startHr = startTime.split(":")[0]
+            const startMin = startTime.split(":")[1]
+            const stopHr = stopTime.split(":")[0]
+            const stopMin = stopTime.split(":")[1]
+            const minutes = ((stopHr - startHr) * 60) + (stopMin - startMin)
+
+            newObj[action[1]].push([minutes, action[4]])
+        }
     })
+
+    let entries = Object.entries(newObj)
+    for(let [name, logs] of entries){
+        if(logs.length > 1){
+            let totalMiles = 0
+            let totalTime = 0
+            logs.forEach(timeDist => {
+                totalTime += timeDist[0]
+                totalMiles += parseFloat(timeDist[1])
+            })
+            logs = [totalTime, Math.round(totalMiles)]
+        } else if(logs.length === 0) {
+            logs = []
+        } else {
+            logs = logs[0]
+        }
+        console.log(name, logs)
+    }
 }
-
-console.log(App.arr)
-
-// parseArray(contentArr)
-
-// class Driver {
-//     constructor(name){
-//         this._name = name
-//         this._trips = Trips
-//     }
-// }
-
-// class Trips {
-//     constructor(startTime, stopTime, distance){
-//         this._start = startTime
-//         this._stop = stopTime
-//         this._distance = distance
-//     }
-//     get convertTime(){
-//         const startHr = self.startTime.split(":")[0]
-//         const startMin = self.startTime.split(":")[1]
-//         const stopHr = self.stopTime.split(":")[0]
-//         const stopMin = self.stopTime.split(":")[1]
-//         const totalTime = ((stopHr - startHr) * 60) + (stopMin - startMin)
-//         return totalTime
-//     }
-// }
 
 /*
 Expected Output
