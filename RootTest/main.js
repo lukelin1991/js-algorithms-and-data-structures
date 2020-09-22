@@ -1,4 +1,3 @@
-
 let fs = require('fs');
 fs.readFile('index.txt', 'utf8', function(err, data){
     if(err) throw err;
@@ -6,12 +5,21 @@ fs.readFile('index.txt', 'utf8', function(err, data){
     parseArray(contentArray)
 })
 
+class App {
+    state = {
+        arr: []
+    }
+}
+
 function parseArray(arr){
     arr.forEach(content => {
         const action = content.split(" ")
-        console.log(action)
+        App.state.arr = action
     })
 }
+
+console.log(App.arr)
+
 // parseArray(contentArr)
 
 // class Driver {
