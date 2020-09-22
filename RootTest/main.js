@@ -26,6 +26,7 @@ function parseArray(arr){
     })
 
     let entries = Object.entries(newObj)
+
     for(let [name, logs] of entries){
         if(logs.length > 1){
             let totalMiles = 0
@@ -39,8 +40,22 @@ function parseArray(arr){
             logs = []
         } else {
             logs = logs[0]
+            logs[1] = parseInt(logs[1])
         }
-        console.log(name, logs)
+        // get avg mph
+        // total time = log[0]
+        // total distance = log[1]
+        let avgMph = (logs[1] / (logs[0]/60)) || 0
+        logs.push(Math.round(avgMph))
+        
+        // final output
+        let miles = logs[1] || 0
+        let mph = logs[2] || 0
+        if(logs.length === 0 ){
+            console.log(`${name}: ${miles} miles`)
+        } else {
+            console.log(`${name}: ${miles} miles @ ${mph} mph`)
+        }
     }
 }
 
